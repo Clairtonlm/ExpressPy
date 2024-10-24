@@ -42,7 +42,7 @@ Archive: yes
     print(f"Número que foi testado (Callerid): {numero_callerid}")
     print(f"Número que vai ser discado (Extension): {numero_discado}")
     print(f"Data/Hora da discagem: {data_hora}")
-    print(f"Status da chamada: Não executado (aguardando chamada)")
+    
     print(f"----------------------------------\n")
 
 if __name__ == "__main__":
