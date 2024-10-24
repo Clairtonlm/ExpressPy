@@ -4,29 +4,24 @@ import datetime
 def main():
     print(f"--------------TESTE DE CHAMADA----------------")
     print("Bem-vindo ao script de teste de chamadas do Seaticall!\n")
-    
 
-    # Solicitar ao usuário que digite o número para Callerid
-    numero_callerid = input("Digite o número que deve discar (Callerid): \n")
+    # Solicitar ao usuário que digite o número que vai ser testado (Callerid)
+    numero_callerid = input("Digite o número que será testado (Callerid - ex: 8521807018): \n")
     
-    # Solicitar ao usuário que digite o número que vai discar
-    numero_discado = input("Digite o número que vai discar (Extension): \n")
-    
-    # Solicitar ao usuário que digite a operadora
-    operadora = input("Digite a operadora do número: \n")
+    # Solicitar ao usuário que digite o número que vai discar (Extension)
+    numero_discado = input("Digite o número que vai discar (ex: 085998689105): \n")
 
     # Captura a data e hora atual
     data_hora = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Definir o formato do callfile
-    callfile_content = f"""Channel: SIP/1000
+    callfile_content = f"""Channel: local/{numero_discado}@call-test
 Callerid: {numero_callerid}
 MaxRetries: 2
 RetryInterval: 300
 WaitTime: 45
-Context: call-test
-Extension: {numero_discado}
-Priority: 1
+Application: Hangup
+Set: TIMEOUT(dial)=20
 Archive: yes
 """
 
@@ -45,8 +40,7 @@ Archive: yes
     print("Relatório de Chamada:")
     print(f"----------------------------------")
     print(f"Número que foi testado (Callerid): {numero_callerid}")
-    print(f"Número para o qual discamos (Extension): {numero_discado}")
-    print(f"Operadora: {operadora}")
+    print(f"Número que vai ser discado (Extension): {numero_discado}")
     print(f"Data/Hora da discagem: {data_hora}")
     print(f"Status da chamada: Não executado (aguardando chamada)")
     print(f"----------------------------------\n")
