@@ -1,5 +1,6 @@
 import os
 
+restaurante = ['Pizza', 'Hamburguer', 'Pastel']
 # lista
 
 
@@ -25,7 +26,20 @@ def opcao_invalida():
     main()
 
 def cadastrar_restaurante():
+    os.system('clear')
+    print('Cadastrando restaurante\n')
+    nome_do_restaurante = input('Nome do restaurante: ')
+    restaurante.append(nome_do_restaurante)
+    print(f'Restaurante {nome_do_restaurante} adicionado com sucesso!\n')
+    input('Pressione ENTER para voltar ao menu')
+    main()
 
+def listar_restaurantes():
+    os.system('clear')
+    print('Listando restaurantes\n')
+    print(restaurante)
+    input('Pressione ENTER para voltar ao menu')
+    main()
 
 def escolher_opcao():
     try:
@@ -35,7 +49,7 @@ def escolher_opcao():
         if opcao == 1:
             cadastrar_restaurante()
         elif opcao == 2:
-            print('Listando restaurantes...')
+            listar_restaurantes()
         elif opcao == 3:
             print('Ativando restaurante...')
         elif opcao == 4:
